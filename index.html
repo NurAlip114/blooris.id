@@ -971,6 +971,7 @@
             animation: waPulse 2s infinite;
             opacity: 0;
             transform: scale(0);
+            cursor: pointer;
         }
         
         .floating-wa.show {
@@ -1312,10 +1313,10 @@
             </p>
             
             <div class="action-buttons" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
-                <a href="https://wa.me/6285795939763" class="btn-custom btn-whatsapp" onclick="handleWhatsAppClick(event)">
+                <button class="btn-custom btn-whatsapp" onclick="openWhatsAppOrder()">
                     <i class="fab fa-whatsapp"></i>
                     Order via WhatsApp
-                </a>
+                </button>
                 <button class="btn-custom btn-products" onclick="showProducts()">
                     <i class="fas fa-shopping-bag"></i>
                     Lihat Koleksi
@@ -1496,7 +1497,7 @@
         <div class="container">
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>📍 Jl. Floral Garden No. 123, Jakarta Selatan</span>
+                <span>📍 rt25 rw 06 babakan kliwon, Cikadu, Kec. Nusaherang, Kabupaten Kuningan, Jawa Barat 45563 </span>
             </div>
             <div class="contact-item">
                 <i class="fas fa-phone"></i>
@@ -1504,7 +1505,7 @@
             </div>
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
-                <span>✉️ info@bloomingmemories.com</span>
+                <span>✉️ info blooris.id@gmail.com</span>
             </div>
         </div>
     </section>
@@ -1518,7 +1519,7 @@
                 </h3>
                 <p class="footer-text">Mewujudkan setiap momen spesial Anda dengan buket dan handmade premium.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/blooris.id?igsh=MW44cjdwZ3VqcXFkcA==" class="social-link"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
@@ -1530,9 +1531,9 @@
     </footer>
     
     <!-- Floating WhatsApp Button - Mobile Optimized -->
-    <a href="https://wa.me/6285795939763" class="floating-wa" target="_blank" id="floatingWA">
+    <div class="floating-wa" id="floatingWA" onclick="openWhatsAppOrder()">
         <i class="fab fa-whatsapp"></i>
-    </a>
+    </div>
     
     <!-- Back to Hero Button - Mobile Optimized -->
     <div class="back-to-hero" id="backToHero" onclick="backToHero()">
@@ -1586,18 +1587,20 @@
         }
         generateParticles();
         
-        // Handle WhatsApp click from hero
-        function handleWhatsAppClick(event) {
-            hasInteracted = true;
-            showNotification('Menghubungkan ke WhatsApp...');
-        }
-        
         // Enhanced WhatsApp function for products
         function openWhatsApp(productName) {
             const message = `✿ Halo Blooming Memories, saya tertarik dengan ${productName}, Mohon informasikan ketersediaan dan detail produknya. Terima kasih!🙏`;
             const whatsappUrl = `https://wa.me/6285795939763?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             showNotification(`Menghubungkan ke WhatsApp untuk ${productName}...`);
+        }
+        
+        // New function for general WhatsApp order
+        function openWhatsAppOrder() {
+            const message = `✿ Halo Blooming Memories, saya tertarik untuk memesan buket handmade premium. Mohon informasikan ketersediaan dan detail produknya. Terima kasih!🙏`;
+            const whatsappUrl = `https://wa.me/6285795939763?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            showNotification('Menghubungkan ke WhatsApp...');
         }
         
         // Show products section with enhanced animations
