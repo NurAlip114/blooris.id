@@ -953,6 +953,108 @@
             box-shadow: 0 8px 20px rgba(107, 141, 214, 0.3);
         }
         
+        /* Floating Gallery Button - Mobile Optimized */
+        .floating-gallery {
+            position: fixed;
+            bottom: 150px; /* Positioned above Instagram */
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(142, 55, 215, 0.35);
+            z-index: 997; /* Below Instagram */
+            transition: all 0.3s ease;
+            animation: galleryPulse 2s infinite;
+            opacity: 0;
+            transform: scale(0);
+            cursor: pointer;
+        }
+        
+        .floating-gallery.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        @keyframes galleryPulse {
+            0% { 
+                box-shadow: 0 10px 30px rgba(142, 55, 215, 0.35); 
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 10px 40px rgba(107, 141, 214, 0.4); 
+                transform: scale(1.05);
+            }
+            100% { 
+                box-shadow: 0 10px 30px rgba(142, 55, 215, 0.35); 
+                transform: scale(1);
+            }
+        }
+        
+        .floating-gallery:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(107, 141, 214, 0.4);
+        }
+        
+        .floating-gallery i {
+            font-size: 24px;
+            color: var(--white);
+        }
+        
+        /* Floating Instagram - Mobile Optimized */
+        .floating-ig {
+            position: fixed;
+            bottom: 85px; /* Positioned above WhatsApp */
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCB045);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(131, 58, 180, 0.35);
+            z-index: 999; /* Below WhatsApp */
+            transition: all 0.3s ease;
+            animation: igPulse 2s infinite;
+            opacity: 0;
+            transform: scale(0);
+            cursor: pointer;
+        }
+        
+        .floating-ig.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        @keyframes igPulse {
+            0% { 
+                box-shadow: 0 10px 30px rgba(131, 58, 180, 0.35); 
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 10px 40px rgba(253, 29, 29, 0.4); 
+                transform: scale(1.05);
+            }
+            100% { 
+                box-shadow: 0 10px 30px rgba(131, 58, 180, 0.35); 
+                transform: scale(1);
+            }
+        }
+        
+        .floating-ig:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(253, 29, 29, 0.4);
+        }
+        
+        .floating-ig i {
+            font-size: 24px;
+            color: var(--white);
+        }
+        
         /* Floating WhatsApp - Mobile Optimized */
         .floating-wa {
             position: fixed;
@@ -1021,7 +1123,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 999;
+            z-index: 996;
             box-shadow: 0 8px 20px rgba(107, 141, 214, 0.25);
         }
         
@@ -1251,6 +1353,31 @@
                 font-size: 1.1rem;
             }
             
+            /* Floating Gallery Button - Desktop */
+            .floating-gallery {
+                width: 65px;
+                height: 65px;
+                bottom: 180px; /* Positioned above Instagram */
+                right: 40px;
+            }
+            
+            .floating-gallery i {
+                font-size: 30px;
+            }
+            
+            /* Floating Instagram Button - Desktop */
+            .floating-ig {
+                width: 65px;
+                height: 65px;
+                bottom: 115px; /* Positioned above WhatsApp */
+                right: 40px;
+            }
+            
+            .floating-ig i {
+                font-size: 30px;
+            }
+            
+            /* Floating WhatsApp Button - Desktop */
             .floating-wa {
                 width: 65px;
                 height: 65px;
@@ -1530,6 +1657,16 @@
         </div>
     </footer>
     
+    <!-- Floating Gallery Button -->
+    <div class="floating-gallery" id="floatingGallery" onclick="openGallery()">
+        <i class="fas fa-images"></i>
+    </div>
+    
+    <!-- Floating Instagram Button -->
+    <div class="floating-ig" id="floatingIG" onclick="openInstagram()">
+        <i class="fab fa-instagram"></i>
+    </div>
+    
     <!-- Floating WhatsApp Button - Mobile Optimized -->
     <div class="floating-wa" id="floatingWA" onclick="openWhatsAppOrder()">
         <i class="fab fa-whatsapp"></i>
@@ -1603,6 +1740,20 @@
             showNotification('Menghubungkan ke WhatsApp...');
         }
         
+        // New function for Instagram
+        function openInstagram() {
+            const instagramUrl = `https://www.instagram.com/blooris.id?igsh=MW44cjdwZ3VqcXFkcA==`;
+            window.open(instagramUrl, '_blank');
+            showNotification('Membuka Instagram...');
+        }
+        
+        // New function for Gallery
+        function openGallery() {
+            const galleryUrl = `galeri.html`;
+            window.open(galleryUrl, '_blank');
+            showNotification('Membuka Galeri Produk...');
+        }
+        
         // Show products section with enhanced animations
         function showProducts() {
             if (hasInteracted) return;
@@ -1644,6 +1795,8 @@
             
             setTimeout(() => {
                 document.getElementById('floatingWA').classList.add('show');
+                document.getElementById('floatingIG').classList.add('show'); // Show Instagram button
+                document.getElementById('floatingGallery').classList.add('show'); // Show Gallery button
             }, 1800);
         }
         
@@ -1766,5 +1919,4 @@
         });
     </script>
 </body>
-
 </html>
