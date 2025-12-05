@@ -953,57 +953,6 @@
             box-shadow: 0 8px 20px rgba(107, 141, 214, 0.3);
         }
         
-        /* Floating Gallery Button - Mobile Optimized */
-        .floating-gallery {
-            position: fixed;
-            bottom: 150px; /* Positioned above Instagram */
-            right: 20px;
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(142, 55, 215, 0.35);
-            z-index: 997; /* Below Instagram */
-            transition: all 0.3s ease;
-            animation: galleryPulse 2s infinite;
-            opacity: 0;
-            transform: scale(0);
-            cursor: pointer;
-        }
-        
-        .floating-gallery.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        @keyframes galleryPulse {
-            0% { 
-                box-shadow: 0 10px 30px rgba(142, 55, 215, 0.35); 
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 0 10px 40px rgba(107, 141, 214, 0.4); 
-                transform: scale(1.05);
-            }
-            100% { 
-                box-shadow: 0 10px 30px rgba(142, 55, 215, 0.35); 
-                transform: scale(1);
-            }
-        }
-        
-        .floating-gallery:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(107, 141, 214, 0.4);
-        }
-        
-        .floating-gallery i {
-            font-size: 24px;
-            color: var(--white);
-        }
-        
         /* Floating Instagram - Mobile Optimized */
         .floating-ig {
             position: fixed;
@@ -1353,18 +1302,6 @@
                 font-size: 1.1rem;
             }
             
-            /* Floating Gallery Button - Desktop */
-            .floating-gallery {
-                width: 65px;
-                height: 65px;
-                bottom: 180px; /* Positioned above Instagram */
-                right: 40px;
-            }
-            
-            .floating-gallery i {
-                font-size: 30px;
-            }
-            
             /* Floating Instagram Button - Desktop */
             .floating-ig {
                 width: 65px;
@@ -1685,11 +1622,6 @@
         </div>
     </footer>
     
-    <!-- Floating Gallery Button -->
-    <div class="floating-gallery" id="floatingGallery" onclick="openGallery()">
-        <i class="fas fa-images"></i>
-    </div>
-    
     <!-- Floating Instagram Button -->
     <div class="floating-ig" id="floatingIG" onclick="openInstagram()">
         <i class="fab fa-instagram"></i>
@@ -1773,13 +1705,6 @@
             const instagramUrl = `https://www.instagram.com/blooris.id?igsh=MW44cjdwZ3VqcXFkcA==`;
             window.open(instagramUrl, '_blank');
             showNotification('Membuka Instagram...');
-        }
-        
-        // New function for Gallery
-        function openGallery() {
-            const galleryUrl = `https://nuralip114.github.io/galeri-buket/`;
-            window.open(galleryUrl, '_blank');
-            showNotification('Membuka Galeri Produk...');
         }
         
         // New function for viewing products
@@ -1866,7 +1791,6 @@
             setTimeout(() => {
                 document.getElementById('floatingWA').classList.add('show');
                 document.getElementById('floatingIG').classList.add('show'); // Show Instagram button
-                document.getElementById('floatingGallery').classList.add('show'); // Show Gallery button
             }, 1800);
         }
         
@@ -1990,4 +1914,3 @@
     </script>
 </body>
 </html>
-
